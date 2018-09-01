@@ -34,6 +34,76 @@ typedef struct tnodo{
 };
 
 int main(){
+    pnodo lista, nuevo, eliminado;
+    int opcion, valor;
+    bool encontrado;
+    do{
+        menu(opcion);
+        switch(opcion){
+            case 1 : 
+                iniciarLista(lista);
+                break;
+            case 2 : 
+                crear(nuevo);
+                agregarInicio(lista,nuevo);
+                break;
+            case 3 : 
+                crear(nuevo);
+                agregarFinal(lista,nuevo);
+                break;    
+            case 4 : 
+                crear(nuevo);
+                agregarEmOrden(lista,nuevo);
+                break;
+            case 5 : 
+                eliminado = quitarInicio(lista);
+                if (eliminado!=NULL) {
+                    cout << "Se extrajo: "<< eliminado->dato << endl;
+                } else {
+                    cout << "No se pudo eliminar." << endl;
+                }
+                break;
+            case 6 : 
+                eliminado = quitarFinal(lista);
+                if (eliminado = NULL) {
+                    cout << "Se extrajo: " << eliminado->dato << endl;
+                } else {
+                    cout << "No se pudo eliminar. " << endl;
+                }
+                break;    
+            case 7 : 
+                cout << "Ingrese un Valor: ";
+                cin >> valor;
+                eliminado = quitarNodoX(lista, valor);
+                if (eliminado != NULL) {
+                    cout << "Se elimino el Valor indicdio" << endl;
+                } else {
+                    cout << "No se ha encontrado el Valor indicado. " << endl;
+                }
+                break;
+            case 8 : 
+                cout << "Ingrese un Valor: ";
+                cin << valor;
+                if (buscarNodo(lista,valor)) {
+                    cout << "Se encotro dentro de la lista" << endl;
+                } else {
+                    cout << "No se encontro dentro de la lista."<< endl;
+                }
+                break;
+            case 9 : 
+                
+                break;    
+            case 10 : 
+                cout << "Ha Salido del Programa" << endl;
+                cout << "Gracias..." << endl;
+                break;
+            default :  
+                cout << "Error Opcion Invalida" << endl;
+                cout << "Intente de Nuevo" << endl;
+                break;        
+        }
+    }while(opcion != 9 ) ;
+    return 0;
 }
 
 //Menu De Opc
@@ -162,6 +232,18 @@ pnodo quitarNodoX(pnodo &lista, int valor){
 }
 
 //Muestra del COntenido de la Lista
+void mostrar(pnodo lista){
+    pnodo i ;
+    if (lista != NULL) {
+        for(i= lista; i != NULL ; i=i->sig ){
+        cout << "Nodo: " << i->dato<< endl;
+    }
+    } else {
+        cout << "Lista Vacia." << endl;
+    }
+}
+
+//Busca si el Valor se encuentra en la Lista
 bool buscarNodo(pnodo lista, int valor){
     pnodo i;
     bool encontrado = false;
@@ -174,25 +256,4 @@ bool buscarNodo(pnodo lista, int valor){
     }       
     return encontrado;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
