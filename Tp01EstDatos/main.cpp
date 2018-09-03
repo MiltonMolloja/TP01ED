@@ -24,6 +24,10 @@
  * Created on 29 de agosto de 2018, 17:54
  */
 #include<iostream>
+#include <stdio.h>
+
+
+
 
 using namespace std;
 
@@ -32,6 +36,21 @@ typedef struct tnodo{
     int dato;
     pnodo sig;
 };
+
+void iniciarLista(pnodo &lista);
+void crear(pnodo &nuevo) ;
+void agregarInicio(pnodo &lista, pnodo nuevo);
+void agregarFinal(pnodo &lista, pnodo nuevo) ;
+void agregarEmOrden(pnodo &lista, pnodo nuevo) ;
+pnodo quitarInicio(pnodo &lista) ;
+pnodo quitarFinal(pnodo &lista) ;
+pnodo quitarNodoX(pnodo &lista, int valor) ;
+void mostrar(pnodo lista);
+bool buscarNodo(pnodo lista, int valor);
+void menu(int &opc);
+
+
+
 
 int main(){
     pnodo lista, nuevo, eliminado;
@@ -83,7 +102,7 @@ int main(){
                 break;
             case 8 : 
                 cout << "Ingrese un Valor: ";
-                cin << valor;
+                cin >> valor;
                 if (buscarNodo(lista,valor)) {
                     cout << "Se encotro dentro de la lista" << endl;
                 } else {
@@ -91,7 +110,7 @@ int main(){
                 }
                 break;
             case 9 : 
-                
+                mostrar(lista);
                 break;    
             case 10 : 
                 cout << "Ha Salido del Programa" << endl;
@@ -102,12 +121,16 @@ int main(){
                 cout << "Intente de Nuevo" << endl;
                 break;        
         }
-    }while(opcion != 9 ) ;
+    }while(opcion != 10 ) ;
+    cout << "salio";
     return 0;
+    
 }
+
 
 //Menu De Opc
 void menu(int &opc){
+    system("CLS");
     cout << "_____________M E N U_____________" << endl;
     cout << "1 - Crear una Lista vacia (Inicializar)." << endl;
     cout << "2 - Agregar un nuevo Nodo al Inicio." << endl;
@@ -118,6 +141,7 @@ void menu(int &opc){
     cout << "7 - Quitar el nodo con el Valor X." << endl;
     cout << "8 - Buscar Dato en la Lista." << endl;
     cout << "9 - Mostar Lista." << endl;
+    cout << "10 - Salir del Programa." << endl;
     cout << "" << endl;
     cin >> opc;
 }
